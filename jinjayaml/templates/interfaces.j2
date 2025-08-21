@@ -4,3 +4,31 @@
 {#   description <description>                       #}
 {#   switchport mode <mode>                          #}
 {# (if access port) switchport access vlan <vlan>    #}
+
+{% for intf, intf_data in interfaces.items() %}
+interface {{ intf }}
+
+{% if intf_data.descr is defined %}
+description {{ intf_data.descr }}
+{% endif %}
+
+{% if intf_data.description is defined %}
+description {{ intf_data.description }}
+{% endif %}
+
+{% if intf_data.mode is defined and intf_data.mode == 'access' %}
+switchport mode {{ intf_data.mode }}
+switchport access vlan {{ intf_data.vlan }}
+{% endif %}
+
+{% if intf_data.type is defined and intf_data.type == 'trunk' %}
+switchport mode {{ intf_data.type }}
+{% endif %}
+
+{% if intf_data.allowed_vlans is defined %}
+switchport trunk allowed vlan {{ intf_data.allowed_vlans | join(',') }}
+{% endif %}
+
+{% endfor %}
+
+

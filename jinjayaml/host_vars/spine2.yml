@@ -3,24 +3,21 @@
 
 # Interfaces
 interfaces:
-  - name: Ethernet1
-    description: "Link to Leaf1"
-    type: trunk
-    # allowed_vlans: [10, 20]
-  - name: Ethernet2
-    description: "Link to Leaf2"
-    type: trunk
-    # allowed_vlans: [10, 20] 
-  - name: Ethernet3
-    description: "Link to Leaf3"
-    type: trunk
-    # allowed_vlans: [20]
-  - name: Ethernet4
-    description: "Link to Leaf4"
-    type: trunk
-  - name: Ethernet48
-    description: "Link to Spine1"
-    type: trunk
+  Ethernet1:
+    descr: "To_Leaf1"
+    mode: "trunk"
+  Ethernet2:
+    descr: "To_Leaf2"
+    mode: "trunk"
+  Ethernet3:
+    descr: "To_Leaf3"
+    mode: "trunk"
+  Ethernet4:
+    descr: "To_Leaf4"
+    mode: "trunk"
+  Ethernet48:
+    descr: "To_Spine1"
+    mode: "trunk"
 
 # VLANs
 vlans:
